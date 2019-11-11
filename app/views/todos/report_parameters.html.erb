@@ -1,0 +1,8 @@
+<%= form_tag({controller: "todos", action: "generate_report"}, method: :get) do%>
+  <p><%=  date_field :start_date, params[:start_date] %></p>
+  <p> to </p>
+  <p><%=  date_field :end_date, params[:end_date] %></p>
+  <div>
+    <%= submit_tag "Submit"%>
+  </div>
+<% end %>

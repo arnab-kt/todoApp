@@ -1,0 +1,8 @@
+<h1>Welcome To Simple To Do App</h1>
+<p><%= link_to "Click here to continue", todos_path %></p>
+
+<br><br>
+
+<% unless user_signed_in? %>
+  <p> <b>Note: You need to log in to continue <b> </p>
+<% end %>

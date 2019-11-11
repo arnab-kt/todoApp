@@ -1,0 +1,24 @@
+<%= form_for @todo do |f| %>
+  <div>
+    <%= render partial: "layouts/form_errors", locals: { model: @todo }%>
+  </div>
+  <br><br>
+  <div>
+    <%= f.label :description, "Description( max: 255 characters)" %><br>
+    <%= f.text_field :description, required: true, placeholder: "Enter description ", required: true %>
+  </div>
+<br><br>
+  <div>
+    <%= f.label :date, "Date" %><br>
+    <%= f.date_field :date, required: true, min: Date.today %>
+  </div>
+<br><br>
+  <div>
+    <%= f.label :done, "Done" %><br>
+    <%= f.select :done, ["true", "false"] %>
+  </div>
+<br><br>
+  <div>
+    <%= f.submit  disabled_with: "Saving..."%>
+  </div>
+<% end %>

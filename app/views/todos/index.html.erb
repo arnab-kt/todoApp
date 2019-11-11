@@ -1,0 +1,45 @@
+<h1>Todos</h1>
+<br>
+<%= form_tag todos_path, method: :get do %>
+  <div>
+    <%= date_field_tag :date, params[:date] %><br>
+    <%= submit_tag "Search"%>
+  </div>
+<% end %>
+<br>
+<% if @filter_params %>
+  <%= link_to "Clear all filters", todos_path %>
+  <br>
+<% end %>
+<br>
+<%= link_to "New todo", new_todo_path %>
+<br>
+  <%= link_to "Generate report", report_parameters_todos_path %>
+<br>
+
+<table>
+  <thead>
+    <tr>
+      <th>S.No</th>
+      <th>Description</th>
+      <th>Deadline</th>
+      <th>Status</th>
+      <th>Edit</th>
+      <th>Delete</th>
+      <th>Change Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @todos.each.with_index(1) do |todo, index| %>
+      <tr>
+        <th><%= index %></th>
+        <td><%= todo.description %></td>
+        <td><%= todo.date %></td>
+        <td><%= todo.done ? "Done" : "Not Done" %></td>
+        <td><%= link_to "Edit", edit_todo_path(todo) %></td>
+        <td><%= delete_link todo_path(todo) %></td>
+        <td><%= link_to "Mark as #{todo.done ? "Undone" : "Done"}", change_status_todo_path(todo) %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
